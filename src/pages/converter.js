@@ -24,7 +24,7 @@ export default function Converter() {
         let [sum, source, , cur] = str.split(' ');
         dispatch(fetchQuote({ currencies: cur, source: source }))
         dispatch(setAmount(sum))
-        setResult(Math.floor((amount * quote) * 100) / 100)
+        setResult((Math.floor((amount * quote) * 100) / 100))
 
       } else {
         setMessage('Incorrect Data!')
@@ -43,28 +43,28 @@ export default function Converter() {
         placeholder="15 usd in eur"
         value={value} onChange={e => setValue(e.target.value)} onKeyDown={e => handlerEnter(e)}
       ></input>
-      <input className="form-control form-control-lg mt-3" type="text" value={result}  disabled readonly></input>
-   
+      <input className="form-control form-control-lg mt-3" type="text" value={result} disabled ></input>
+
       <p>{message}</p>
 
- 
-      <table className = 'table'>
-   <thead>
-      <tr>
-         <th>Code</th>
-         <th>Name</th>
-      </tr>
-   </thead>
-   <tbody>
-   {
-     supportedCurrencies.map((el,index) => (<tr key = {index} className = {index%2 === 0 ? 'table-primary': 'table-secondary'}>
-         <td>{el[0]}</td>
-         <td>{el[1]}</td>
-       </tr>
-     ))
-   }
-   </tbody>
-</table>
+
+      <table className='table'>
+        <thead>
+          <tr>
+            <th>Code</th>
+            <th>Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            supportedCurrencies.map((el, index) => (<tr key={index} className={index % 2 === 0 ? 'table-primary' : 'table-secondary'}>
+              <td>{el[0]}</td>
+              <td>{el[1]}</td>
+            </tr>
+            ))
+          }
+        </tbody>
+      </table>
     </div>
   )
 }
